@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain;
+using Domain.BasketBall;
 
 namespace Domain
 {
     public class BasketRepository : Ireopsitory<PlayerBasketData>
     {
 
-
+        
 
         List<PlayerBasketData> data = new List<PlayerBasketData>();
-        public IEnumerable<PlayerBasketData> ReturnBasketData()
+        public IList<PlayerBasketData> ReturnBasketData()
         {
             data.Add(new PlayerBasketData { Id = "1", Name = "player1", Nickname = "P1", Team = "A", Position = BasketballPositions.C.ToString(), Number = "10", Scoredpoint = 10, Assist = 5, Rebound = 2 });
             data.Add(new PlayerBasketData { Id = "2", Name = "player2", Nickname = "P2", Team = "A", Position = BasketballPositions.G.ToString(), Number = "20", Scoredpoint = 10, Assist = 5, Rebound = 2 });
@@ -23,6 +23,7 @@ namespace Domain
             data.Add(new PlayerBasketData { Id = "6", Name = "player6", Nickname = "P6", Team = "B", Position = BasketballPositions.F.ToString(), Number = "3", Scoredpoint = 10, Assist = 5, Rebound = 2 });
             return data;
         }
+      
         public int CalcMVP()
         {
             IEnumerable<PlayerBasketData> BasketData = ReturnBasketData();
@@ -40,7 +41,43 @@ namespace Domain
 
         public int CalcPints()
         {
-            throw new NotImplementedException();
+            List<int> Team1Points=new List<int>();
+            List<int> Team2Points=new List<int>();
+            //IList<PlayerBasketData> data = ReturnBasketData();
+            foreach (var item in ReturnBasketData())
+            {
+                switch (item.Team)
+                {
+                    case "A":
+                        Team1Points.Add(CalcPlayerPoints(item.Position,item.Scoredpoint,item.Assist,item.Rebound));
+                        break;
+                    case "B":
+                        Team2Points.Add(CalcPlayerPoints(item.Position, item.Scoredpoint, item.Assist, item.Rebound));
+                        break;
+                }
+            }
+            return 0;
+        }
+        public int CalcPlayerPoints(string position,int point,int assist,int rebound)
+        {
+            int playerpoint = 0;
+
+            switch (position)
+            {
+                case "G":
+                    playerpoint=  point * ratingpoints.G_Scoredpoint + assist * ratingpoints.G_Assist + rebound * ratingpoints.G_Rebound;
+                    break;
+                case "C":
+                    playerpoint = point * ratingpoints.G_Scoredpoint + assist * ratingpoints.G_Assist + rebound * ratingpoints.G_Rebound;
+                    break;
+                case "F":
+                    playerpoint = point * ratingpoints.G_Scoredpoint + assist * ratingpoints.G_Assist + rebound * ratingpoints.G_Rebound;
+                    break;
+                default:
+                    break;
+                   
+            }
+            return playerpoint;
         }
     }
 }
