@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain.BasketBall
 {
-     public class Teams
+     public class BasketballTeams
     {
         public string Name { get; set; }
         public int  TotalPoints { get; set; }

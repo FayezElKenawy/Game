@@ -11,15 +11,16 @@ namespace GameOutPut
         
         static void Main(string[] args)
         {
-            BasketRepository r = new BasketRepository();
-            List<Teams> list = r.CalcPints();
-            foreach (var item in list)
+            MVP r = new MVP();
+            List<PlayerBasketData> winnerplayer = r.CalcMVP();
+            Console.Write("BasketBall most Valuable Player =>  ");
+            foreach (var item in winnerplayer)
             {
-                Console.WriteLine("Team Name : "+item.Name);
-                Console.WriteLine("Team Points : " + item.TotalPoints);
+                Console.WriteLine(item.Name+"; "+item.Nickname+"; "+item.Number+"; "
+                    +item.Team + "; " +item.Position + "; " +item.Scoredpoint + "; " +item.Rebound + "; " +item.Assist);
             }
-            
-           
+
+
 
         }
 

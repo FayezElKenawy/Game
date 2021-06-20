@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Domain.HandBall
 {
-   public interface Ireopsitory<T> where T : class
+    public enum HandballPositions
     {
-        int CalcPints();
-        int CalcMVP();
+        G, F
     }
 }
