@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Domain.BasketBall
 {
@@ -63,20 +59,20 @@ namespace Domain.BasketBall
             return playerpoint;
         }
         //claculate winner Team
-        public string Winner(List<BasketballTeams> teams)
-        {
-            IEnumerable<BasketballTeams> d = teams;
-            string winner = "";
-            int max = int.MinValue;
-            foreach (var item in teams)
-            {
-                if (item.TotalPoints>max)
-                {
-                    max = item.TotalPoints;
-                }
-            }
-            winner =d.Single(c=>c.TotalPoints==max).Name ;
-            return winner;
-        }
+        //public string Winner(List<BasketballTeams> teams)
+        //{
+        //    IEnumerable<BasketballTeams> d = teams;
+        //    string winner = "";
+        //    int max = int.MinValue;
+        //    foreach (var item in teams)
+        //    {
+        //        if (item.TotalPoints>max)
+        //        {
+        //            max = item.TotalPoints;
+        //        }
+        //    }
+        //    winner =d.Single(c=>c.TotalPoints==max).Name ;
+        //    return winner;
+        //}
     }
 }
